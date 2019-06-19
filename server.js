@@ -2,17 +2,17 @@
 
 require('dotenv').config();
 
-const PORT        = process.env.PORT || 8080;
-const ENV         = process.env.ENV || "development";
-const express     = require("express");
-const bodyParser  = require("body-parser");
-const sass        = require("node-sass-middleware");
-const app         = express();
+const PORT = process.env.PORT || 8080;
+const ENV = process.env.ENV || "development";
+const express = require("express");
+const bodyParser = require("body-parser");
+const sass = require("node-sass-middleware");
+const app = express();
 
-const knexConfig  = require("./knexfile");
-const knex        = require("knex")(knexConfig[ENV]);
-const morgan      = require('morgan');
-const knexLogger  = require('knex-logger');
+const knexConfig = require("./knexfile");
+const knex = require("knex")(knexConfig[ENV]);
+const morgan = require('morgan');
+const knexLogger = require('knex-logger');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -42,6 +42,42 @@ app.use("/api/users", usersRoutes(knex));
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+// to create new poll
+app.post("/", (req, res) => {
+
+});
+
+// to render poll admin page
+app.get("/:id/admin", (req, res) => {
+
+});
+
+// to handle admin requests
+app.post("/:id/admin", (req, res) => {
+
+});
+
+// to render poll user page
+app.get("/:id/user", (req, res) => {
+
+});
+
+app.post("/:id/user", (req, res) => {
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
