@@ -1,12 +1,79 @@
 header {
+  position: relative;
+  z-index: 2;
   display: flex;
   justify-content: center;
   height: 50%;
-  background: {
-    color: #70A348;
-  }
+  background: #d5da24;
+  background: -moz-radial-gradient(center, ellipse cover,  #d5da24 0%, #babe19 100%);
+  background: -webkit-radial-gradient(center, ellipse cover,  #d5da24 0%,#babe19 100%);
+  background: radial-gradient(ellipse at center,  #d5da24 0%,#babe19 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d5da24', endColorstr='#babe19',GradientType=1 );
+  -webkit-border-radius: 0 0 40px 40px;
+  border-radius: 0 0 40px 40px;
 
-  .logo {
-    background-color: #eee;
+  section {
+    .logo {
+      width: 10.9375rem;
+      text-align: center;
+      margin: 3.125rem auto 0;
+
+      a {
+        text-decoration: none;
+        color: #858813;
+
+        &:hover {
+          img {
+            -webkit-animation: bounce 1.25s ease infinite;
+            -z-animation: bounce 1.25s ease infinite;
+            -o-animation: bounce 1.25s ease infinite;
+            animation: bounce 1.25s ease infinite;
+          }
+        }
+
+        h1 {
+          font: {
+            family: 'Knewave', cursive;
+            size: 3.375rem;
+          }
+          margin: 0 0 -0.9375rem;
+          text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+        }
+      }
+    }
+
+    h2 {
+      font: {
+        size: 1rem;
+        weight: 400;
+      }
+      color: #fff;
+      letter-spacing: 1px;
+    }
   }
+}
+
+// Bounce Animation 
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
+  40% {-webkit-transform: translateY(-30px) }
+  60% {-webkit-transform: translateY(-20px);}
+} 
+
+@-moz-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
+  40% {-webkit-transform: translateY(-30px) }
+  60% {-webkit-transform: translateY(-20px);}
+} 
+
+@-o-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
+  40% {-webkit-transform: translateY(-30px) }
+  60% {-webkit-transform: translateY(-20px);}
+} 
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-30px);}
+  60% {transform: translateY(-20px);}
 }

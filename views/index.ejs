@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-  <title>Pick.le - Helps you pick a choice!</title>
-  <!-- Import Raleway font from Google -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,600,600i,700,700i&display=swap" rel="stylesheet">
+  <title>Pickle</title>
+  <!-- Import fonts from Google -->
+  <link href="https://fonts.googleapis.com/css?family=Knewave|Nunito:300i,400,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
@@ -17,15 +17,18 @@
     <section>
       <div class="logo">
         <a href="#">
-          <img src="#" alt="Pick.le">
+          <img src="/images/logo.svg" alt="Pickle">
+          <h1>Pickle</h1>
         </a>
       </div>
+      <h2>Create a poll and we'll help you pick... le</h2>
     </section>
   </header>
+  <div class="accent"></div>
   <main>
     <section>
       <form method="POST" action="/">
-        <input class="question" type="text" name="question" placeholder="Type your question here">
+        <input class="question" type="text" name="question" placeholder="What do you need help picking between?">
         <button id="add-option">Add an Option</button>
         <input type="submit" id="submit" value="Submit">
         <input type="hidden" id="num-options" name="num-options" value="3">
