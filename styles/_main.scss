@@ -1,43 +1,103 @@
 main {
+  position: relative;
+  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
   max-width: 50rem;
-  margin: -12.5rem auto 0;
+  margin: -3.4375rem auto 3.4375rem;
   background: {
     color: #fff;
   }
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
-  padding: 1.25rem;
-  -webkit-box-shadow: 0 25px 50px 0 rgba(0,0,0,0.25);
-  box-shadow: 0 25px 50px 0 rgba(0,0,0,0.25);
+  -webkit-border-radius: 0.625rem;
+  border-radius: 0.625rem;
+  padding: 2.5rem;
+  -webkit-box-shadow: 0 25px 50px 0 rgba(0,0,0,0.15);
+  box-shadow: 0 25px 50px 0 rgba(0,0,0,0.15);
 
   section {
     width: 100%;
-    form {
 
+    form {
       .question {
+        color: $primary-color;
         width: 100%;
         border: {
           top: none;
           left: none;
           right: none;
-          bottom: 1px solid rgba(0,0,0,0.075);
+          bottom: 2px solid #eee;
         }
         font: {
           size: 1.5rem;
         }
+        letter-spacing: 1px;
         outline: none;
+        padding: 0.625rem;
+        margin-bottom: 1.25rem;
+        word-wrap: break-word;
 
         &::-webkit-input-placeholder {
-          color: rgba(0,0,0,0.5);
+          color: #222;
+          opacity: 1;
         }
         &::-moz-placeholder {
-          color: rgba(0,0,0,0.5);
+          color: #222;
+          opacity: 1;
         }
         &:-ms-input-placeholder {
-          color: rgba(0,0,0,0.5);
+          color: #222;
+          opacity: 1;
+        }
+
+        &:focus {
+          border-color: $primary-color;
+          background-color: rgba(47,145,46,0.1);
+          &::-webkit-input-placeholder {
+            color: $primary-color;
+          }
+          &::-moz-placeholder {
+            color: $primary-color;
+          }
+          &:-ms-input-placeholder {
+            color: $primary-color;
+          }
+        }
+      }
+
+      .option {
+        color: $primary-color;
+        width: 100%;
+        border: 2px dashed #eee;
+        outline: none;
+        padding: 0.9375rem;
+        margin-bottom: 1.25rem;
+
+        &::-webkit-input-placeholder {
+          color: #222;
+          opacity: 1;
+        }
+        &::-moz-placeholder {
+          color: #222;
+          opacity: 1;
+        }
+        &:-ms-input-placeholder {
+          color: #222;
+          opacity: 1;
+        }
+
+        &:focus {
+          border-color: $primary-color;
+          background-color: rgba(47,145,46,0.1);
+          &::-webkit-input-placeholder {
+            color: $primary-color;
+          }
+          &::-moz-placeholder {
+            color: $primary-color;
+          }
+          &:-ms-input-placeholder {
+            color: $primary-color;
+          }
         }
       }
     }
