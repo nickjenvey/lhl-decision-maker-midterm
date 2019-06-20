@@ -23,6 +23,7 @@ module.exports = function dataHelper() {
       form.id = this.generateId();
       form.question = body.question;
       form.numOptions = body["num-options"];
+      form.email = body.email;
       form.options = [];
       for (let i = 0; i < form.numOptions; i++) {
         form.options.push(body[`option${i+1}`]);
