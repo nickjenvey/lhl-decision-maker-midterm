@@ -16,5 +16,6 @@ $(() => {
     event.preventDefault();
     numOptions++;
     addOptionInput(numOptions);
+    $("#num-options").val(numOptions);
   })
 });

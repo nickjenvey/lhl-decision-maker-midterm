@@ -1,2 +1,51 @@
-<%= db.id %>
-<%= db.question %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Pick.le - Helps you pick a choice!</title>
+  <!-- Import Raleway font from Google -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,600,600i,700,700i&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
+  <!-- scripts for the app -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/scripts/app.js"></script>
+
+<body>
+  <header>
+    <section>
+      <div class="logo">
+        <a href="#">
+          <img src="#" alt="Pick.le">
+        </a>
+      </div>
+    </section>
+  </header>
+  <main>
+    <section>
+      <!-- <form method="POST" action="/">
+        <input class="question" type="text" name="question" placeholder="Type your question here">
+        <button id="add-option">Add an Option</button>
+        <input type="submit" id="submit" value="Submit">
+        <input type="hidden" id="num-options" name="num-options" value="3">
+      </form> -->
+      <p> Question:
+        <%=db.question%>
+      </p>
+      <% for (key in db.options) {%>
+      <p> Option
+        <%=key%>:
+        <%=db.options[key]%>
+      </p>
+      <% }%>
+    </section>
+  </main>
+  <footer>
+    <section>
+      <p>Pick.le was created by nick<sup>2</sup> for our midterm project at Lighthouse Labs.</p>
+    </section>
+  </footer>
+</body>
+
+</html>

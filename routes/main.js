@@ -12,8 +12,7 @@ router.get("/", (req, res) => {
 
 // to create new poll
 router.post("/", (req, res) => {
-  db.id = dataHelper.generateId();
-  db.question = req.body.question;
+  dataHelper.parseForm(db, req.body);
   res.redirect(`/${db.id}/admin`);
 });
 
