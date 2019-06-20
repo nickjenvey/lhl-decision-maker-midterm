@@ -19,13 +19,13 @@ module.exports = function dataHelper() {
       return result.join("");
     },
 
-    parseForm: function(db, body) {
-      db.id = this.generateId();
-      db.question = body.question;
-      db.numOptions = body["num-options"];
-      db.options = [];
-      for (let i = 0; i < db.numOptions; i++) {
-        db.options.push(body[`option${i+1}`]);
+    parseForm: function(form, body) {
+      form.id = this.generateId();
+      form.question = body.question;
+      form.numOptions = body["num-options"];
+      form.options = [];
+      for (let i = 0; i < form.numOptions; i++) {
+        form.options.push(body[`option${i+1}`]);
       }
     },
   };
