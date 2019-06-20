@@ -2,20 +2,25 @@
 
 const express = require('express');
 const router = express.Router();
+const bodyParser = require("body-parser");
+const db = {};
+const dataHelper = require("../data-helpers/helper")();
 
 router.get("/", (req, res) => {
   res.render("index");
 });
 
-// // to create new poll
-// app.post("/", (req, res) => {
-
-// });
+// to create new poll
+router.post("/", (req, res) => {
+  db.id = dataHelper.generateId();
+  db.question = req.body.question;
+  res.redirect(`/${db.id}/admin`);
+});
 
 // // to render poll admin page
-// app.get("/:id/admin", (req, res) => {
-
-// });
+router.get("/:id/admin", (req, res) => {
+  res.render("admin.ejs", { db });
+});
 
 // // to handle admin requests
 // app.post("/:id/admin", (req, res) => {
@@ -29,7 +34,7 @@ router.get("/", (req, res) => {
 
 // app.post("/:id/user", (req, res) => {
 
-      // });
+// });
 
 
 
