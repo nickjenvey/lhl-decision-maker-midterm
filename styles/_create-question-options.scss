@@ -1,15 +1,23 @@
 .question-options {
   margin-bottom: 6.25rem;
 
-  .question {
+  .q {
+    background: {
+      color: $dark;
+    }
+    font: {
+      weight: 600;
+    }
+    content: "Q:";
+    color: #fff;
+    top: 0;
+    left: 0;
+  }
+
+  .question--input {
     color: $primary-color;
     width: 100%;
-    border: {
-      top: none;
-      left: none;
-      right: none;
-      bottom: 2px solid #eee;
-    }
+    border: 2px solid $dark;
     font: {
       size: 1.5rem;
     }
@@ -17,18 +25,18 @@
     outline: none;
     padding: 0.625rem;
     margin-bottom: 3.125rem;
-    word-wrap: break-word;
+    position: relative;
 
     &::-webkit-input-placeholder {
-      color: #222;
+      color: $dark;
       opacity: 1;
     }
     &::-moz-placeholder {
-      color: #222;
+      color: $dark;
       opacity: 1;
     }
     &:-ms-input-placeholder {
-      color: #222;
+      color: $dark;
       opacity: 1;
     }
 
@@ -50,21 +58,21 @@
   .option {
     color: $primary-color;
     width: 100%;
-    border: 2px dashed #eee;
+    border: 2px dashed $dark;
     outline: none;
     padding: 0.9375rem;
     margin-bottom: 1.25rem;
 
     &::-webkit-input-placeholder {
-      color: #222;
+      color: $dark;
       opacity: 1;
     }
     &::-moz-placeholder {
-      color: #222;
+      color: $dark;
       opacity: 1;
     }
     &:-ms-input-placeholder {
-      color: #222;
+      color: $dark;
       opacity: 1;
     }
 

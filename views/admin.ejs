@@ -2,48 +2,60 @@
 <html lang="en">
 
 <head>
-  <title>Pick.le - Helps you pick a choice!</title>
-  <!-- Import Raleway font from Google -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,600,600i,700,700i&display=swap" rel="stylesheet">
+  <title>Pickle</title>
+  <!-- Import FontAwesome -->
+  <script src="https://kit.fontawesome.com/e0cb9a35ac.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+  <!-- Import fonts from Google -->
+  <link href="https://fonts.googleapis.com/css?family=Knewave|Nunito:300i,400,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <!-- scripts for the app -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="/scripts/admin-page.js"></script>
+</head>
 
 <body>
   <header>
     <section>
       <div class="logo">
         <a href="#">
-          <img src="#" alt="Pick.le">
+          <img src="/images/logo.svg" alt="Pickle">
+          <h1>Pickle</h1>
         </a>
       </div>
+      <h2>Create a poll and we'll help you pick... le</h2>
     </section>
   </header>
   <main>
     <section>
-      <p> Admin :
-        <%=form.email%>
-      </p>
-      <p> Question:
-        <%=form.question%>
-      </p>
-      <% for (let i=0;i<form.options.length;i++) {%>
-      <p> Option
-        <%=(i+1)%>:
-        <%=form.options[i]%>
-      </p>
-      <% }%>
-      <button id="vote">Vote</button>
-      <button id="result">Show Result</button>
-      <button id="share">Share</button>
+      <div class="admin">
+          Admin Email: <%=form.email%>
+      </div>
+      <div class="question--div">
+        <span class="q">Q:</span><%=form.question%>
+      </div>
+      <h2 class="sortable-title">Sort these ordering from favourite to least favourite:</h2>
+      <div class="sortable">
+        <% for (let i=0;i<form.options.length;i++) {%>
+          <div class="option">
+            <%=form.options[i]%>
+          </div>
+        <% }%>
+      </div>
+      <div class="buttons">
+        <button id="vote">Vote</button>
+        <button id="result">Show Result</button>
+        <button id="share">Share</button>
+      </div>
     </section>
   </main>
   <footer>
     <section>
-      <p>Pick.le was created by nick<sup>2</sup> for our midterm project at Lighthouse Labs.</p>
+      <p>Pickle was created by <span class="team-name">nick<sup>2</sup></span> for our midterm project at Lighthouse Labs.</p>
     </section>
   </footer>
 </body>

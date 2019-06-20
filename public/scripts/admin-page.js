@@ -1,3 +1,4 @@
 $(() => {
-
+  $(".sortable").sortable();
+  $(".sortable").disableSelection();
 })
