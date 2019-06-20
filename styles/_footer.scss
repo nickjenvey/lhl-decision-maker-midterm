@@ -6,6 +6,17 @@ footer {
   background: {
     color: #fff;
   }
-  -webkit-border-radius: 10px 10px 0 0;
-  border-radius: 10px 10px 0 0;
+  -webkit-border-radius: 2.5rem 2.5rem 0 0;
+  border-radius: 2.5rem 2.5rem 0 0;
+  font: {
+    size: 0.875rem;
+  }
+  color: #ccc;
+
+  .team-name {
+    font: {
+      family: monaco, Consolas, Lucida Console, monospace;
+    }
+    color: $primary-color;
+  }
 }

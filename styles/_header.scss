@@ -3,14 +3,14 @@ header {
   z-index: 2;
   display: flex;
   justify-content: center;
-  height: 50%;
-  background: #d5da24;
-  background: -moz-radial-gradient(center, ellipse cover,  #d5da24 0%, #babe19 100%);
-  background: -webkit-radial-gradient(center, ellipse cover,  #d5da24 0%,#babe19 100%);
-  background: radial-gradient(ellipse at center,  #d5da24 0%,#babe19 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d5da24', endColorstr='#babe19',GradientType=1 );
-  -webkit-border-radius: 0 0 40px 40px;
-  border-radius: 0 0 40px 40px;
+  height: 26.875rem;
+  background: $accent-color-1;
+  background: -moz-radial-gradient(center, ellipse cover,  $accent-color-1 0%, #babe19 100%);
+  background: -webkit-radial-gradient(center, ellipse cover,  $accent-color-1 0%,#babe19 100%);
+  background: radial-gradient(ellipse at center,  $accent-color-1 0%,#babe19 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$accent-color-1', endColorstr='#babe19',GradientType=1 );
+  -webkit-border-radius: 0 0 2.5rem 2.5rem;
+  border-radius: 0 0 2.5rem 2.5rem;
 
   section {
     .logo {
@@ -20,7 +20,7 @@ header {
 
       a {
         text-decoration: none;
-        color: #858813;
+        color: $accent-color-2;
 
         &:hover {
           img {

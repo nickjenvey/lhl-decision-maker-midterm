@@ -1,0 +1,129 @@
+.question-options {
+  margin-bottom: 6.25rem;
+
+  .question {
+    color: $primary-color;
+    width: 100%;
+    border: {
+      top: none;
+      left: none;
+      right: none;
+      bottom: 2px solid #eee;
+    }
+    font: {
+      size: 1.5rem;
+    }
+    letter-spacing: 1px;
+    outline: none;
+    padding: 0.625rem;
+    margin-bottom: 3.125rem;
+    word-wrap: break-word;
+
+    &::-webkit-input-placeholder {
+      color: #222;
+      opacity: 1;
+    }
+    &::-moz-placeholder {
+      color: #222;
+      opacity: 1;
+    }
+    &:-ms-input-placeholder {
+      color: #222;
+      opacity: 1;
+    }
+
+    &:focus {
+      border-color: $primary-color;
+      background-color: rgba(47,145,46,0.1);
+      &::-webkit-input-placeholder {
+        color: $primary-color;
+      }
+      &::-moz-placeholder {
+        color: $primary-color;
+      }
+      &:-ms-input-placeholder {
+        color: $primary-color;
+      }
+    }
+  }
+
+  .option {
+    color: $primary-color;
+    width: 100%;
+    border: 2px dashed #eee;
+    outline: none;
+    padding: 0.9375rem;
+    margin-bottom: 1.25rem;
+
+    &::-webkit-input-placeholder {
+      color: #222;
+      opacity: 1;
+    }
+    &::-moz-placeholder {
+      color: #222;
+      opacity: 1;
+    }
+    &:-ms-input-placeholder {
+      color: #222;
+      opacity: 1;
+    }
+
+    &:focus {
+      border-color: $primary-color;
+      background-color: rgba(47,145,46,0.1);
+      &::-webkit-input-placeholder {
+        color: $primary-color;
+      }
+      &::-moz-placeholder {
+        color: $primary-color;
+      }
+      &:-ms-input-placeholder {
+        color: $primary-color;
+      }
+    }
+  }
+
+  #add-option {
+    display: block;
+    background: {
+      color: $primary-color;
+    }
+    position: relative;
+    -webkit-border-radius: 6.25rem;
+    border-radius: 6.25rem;
+    border: 2px solid $secondary-color;
+    color: #fff;
+    padding: 0.625rem 3.125rem 0.625rem 1.25rem;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    font: {
+      size: 0.875rem;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      -webkit-box-shadow: 0 4px 10px 0 rgba(0,0,0,0.25);
+      box-shadow: 0 4px 10px 0 rgba(0,0,0,0.25);
+
+      &:after {
+        color: #fff;
+      }
+    }
+
+    &:after {
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      right: 1.25rem;
+      transform: translateY(-50%);
+      font: {
+        family: "Font Awesome 5 Free";
+        weight: 900;
+        size: 1rem;
+      }
+      content: "\f055";
+      color: $secondary-color;
+    }
+  }
+}
