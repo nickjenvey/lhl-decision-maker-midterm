@@ -3,6 +3,9 @@
 
 <head>
   <title>Pickle</title>
+  <!-- Import FontAwesome -->
+  <script src="https://kit.fontawesome.com/e0cb9a35ac.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
   <!-- Import fonts from Google -->
   <link href="https://fonts.googleapis.com/css?family=Knewave|Nunito:300i,400,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
@@ -28,17 +31,21 @@
   <main>
     <section>
       <form method="POST" action="/">
-        <input class="question" type="text" name="question" placeholder="What do you need help picking between?">
-        <button id="add-option">Add an Option</button>
-        <input class="email" type="email" name="email" placeholder="Please enter your email" required>
-        <input type="submit" id="submit" value="Submit">
-        <input type="hidden" id="num-options" name="num-options" value="3">
+        <div class="question-options">
+          <input class="question" type="text" name="question" placeholder="What do you need help picking between?">
+          <button id="add-option">Add a new option</button>
+        </div>
+        <div class="email-submit">
+          <input class="email" type="email" name="email" placeholder="Please enter your email to create your poll" required>
+          <input class="create" type="submit" id="submit" value="Create Poll">
+          <input type="hidden" id="num-options" name="num-options" value="3">
+        </div>
       </form>
     </section>
   </main>
   <footer>
     <section>
-      <p>Pick.le was created by nick<sup>2</sup> for our midterm project at Lighthouse Labs.</p>
+      <p>Pickle was created by <span class="team-name">nick<sup>2</sup></span> for our midterm project at Lighthouse Labs.</p>
     </section>
   </footer>
 </body>

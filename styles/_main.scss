@@ -19,87 +19,10 @@ main {
     width: 100%;
 
     form {
-      .question {
-        color: $primary-color;
-        width: 100%;
-        border: {
-          top: none;
-          left: none;
-          right: none;
-          bottom: 2px solid #eee;
-        }
-        font: {
-          size: 1.5rem;
-        }
-        letter-spacing: 1px;
-        outline: none;
-        padding: 0.625rem;
-        margin-bottom: 1.25rem;
-        word-wrap: break-word;
 
-        &::-webkit-input-placeholder {
-          color: #222;
-          opacity: 1;
-        }
-        &::-moz-placeholder {
-          color: #222;
-          opacity: 1;
-        }
-        &:-ms-input-placeholder {
-          color: #222;
-          opacity: 1;
-        }
-
-        &:focus {
-          border-color: $primary-color;
-          background-color: rgba(47,145,46,0.1);
-          &::-webkit-input-placeholder {
-            color: $primary-color;
-          }
-          &::-moz-placeholder {
-            color: $primary-color;
-          }
-          &:-ms-input-placeholder {
-            color: $primary-color;
-          }
-        }
-      }
-
-      .option {
-        color: $primary-color;
-        width: 100%;
-        border: 2px dashed #eee;
-        outline: none;
-        padding: 0.9375rem;
-        margin-bottom: 1.25rem;
-
-        &::-webkit-input-placeholder {
-          color: #222;
-          opacity: 1;
-        }
-        &::-moz-placeholder {
-          color: #222;
-          opacity: 1;
-        }
-        &:-ms-input-placeholder {
-          color: #222;
-          opacity: 1;
-        }
-
-        &:focus {
-          border-color: $primary-color;
-          background-color: rgba(47,145,46,0.1);
-          &::-webkit-input-placeholder {
-            color: $primary-color;
-          }
-          &::-moz-placeholder {
-            color: $primary-color;
-          }
-          &:-ms-input-placeholder {
-            color: $primary-color;
-          }
-        }
-      }
+      @import 'question-options';
+      @import 'email-submit';
+      
     }
   }
 }
