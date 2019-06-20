@@ -1,9 +1,8 @@
 let numOptions = 3;
 
 const addOptionInput = (numOptions) => {
-  const label = $("<label>").attr("for", `option${numOptions}`).text(`Option ${numOptions}`);
-  const inputField = $("<input>").attr("type", "text").attr("name", `option${numOptions}`).addClass("option");
-  $("#add-option").before(label, inputField, $("<br>"));
+  const inputField = $("<input>").attr("type", "text").attr("name", `option${numOptions}`).attr("placeholder", `Option ${numOptions}`).addClass("option");
+  $("#add-option").before(inputField, $("<br>"));
 }
 
 $(() => {
