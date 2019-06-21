@@ -36,7 +36,8 @@ $(() => {
       getResult();
       resultShown = true;
     } else {
-      $("#result-panel").slideUp().empty();
+      $("#result-panel .option").remove();
+      $("#result-panel").slideUp();
       resultShown = false;
     }
   });
