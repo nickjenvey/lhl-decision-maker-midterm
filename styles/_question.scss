@@ -2,19 +2,15 @@
   color: $dark;
   width: 100%;
   border: 2px solid $dark;
-  font: {
-    size: 1.5rem;
-  }
+  font-size: 1.5rem;
   letter-spacing: 1px;
   outline: none;
   padding: 0.625rem 0.625rem 0.625rem 0;
-  margin-bottom: 3.125rem;
+  margin-bottom: $bottom-spacing;
 
   .q {
     padding: 0.625rem;
-    background: {
-      color: $dark;
-    }
+    background-color: $dark;
     font: {
       weight: 600;
     }
