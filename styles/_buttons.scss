@@ -56,14 +56,10 @@
       family: monaco, Consolas, Lucida Console, monospace;
       size: 0.75rem;
     }
-    margin: 0 1.25rem 0 auto;
+    margin: 0 auto 0 1.25rem;
 
     &:hover {
       color: $accent-color-1;
     }
-  }
-
-  #share {
-
   }
 }

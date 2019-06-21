@@ -1,4 +1,4 @@
-.sortable-title {
+.sortable-title, .result-title {
   font: {
     size: 1rem;
     weight: 400;
@@ -21,4 +21,12 @@
   outline: none;
   padding: 0.9375rem;
   margin-bottom: 1.25rem;
+}
+
+#result-panel {
+  margin-bottom: $bottom-spacing;
+  padding-bottom: $bottom-spacing;
+  border-bottom: 6px dashed $primary-color;
+
+  .option {}
 }
