@@ -8,14 +8,17 @@
 
 .sortable {
   margin-bottom: $bottom-spacing;
-
+  
   .option {
-    color: $dark;
-    width: 100%;
-    border: 2px dashed $dark;
-    outline: none;
-    padding: 0.9375rem;
-    margin-bottom: 1.25rem;
     cursor: pointer;
   }
+}
+
+.option {
+  color: $dark;
+  width: 100%;
+  border: 2px dashed $dark;
+  outline: none;
+  padding: 0.9375rem;
+  margin-bottom: 1.25rem;
 }

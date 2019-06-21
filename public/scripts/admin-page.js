@@ -16,9 +16,9 @@ const getResult = () => {
   const url = `/${$("#admin").data("id")}/result`;
   $.getJSON(url, function(data) {
     data.forEach(element => {
-      $("<div>").text(`${element[0]} has a ranking of ${Math.round(element[1]*100)/100}`).appendTo($("#result-panel"));
+      $("<div>").addClass("option").text(`${element[0]} has a ranking of ${Math.round(element[1]*100)/100}`).appendTo($("#result-panel"));
     });
-    $("#result-panel").slideDown(1000);
+    $("#result-panel").slideDown();
   });
 }
 
