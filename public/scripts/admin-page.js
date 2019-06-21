@@ -1,6 +1,6 @@
 const vote = () => {
   const options = [];
-  $(".option").each(function(index, value) {
+  $(".sortable .option").each(function(index, value) {
     options.push({
       option: $(value).text().trim(),
       rank: Number(index),
