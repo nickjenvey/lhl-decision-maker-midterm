@@ -1,6 +1,6 @@
 const voteButton = () => {
   const options = [];
-  $(".options").each(function(index, value) {
+  $(".option").each(function(index, value) {
     options.push({
       option: $(value).text().trim(),
       rank: Number(index),
@@ -14,8 +14,7 @@ const voteButton = () => {
 
 
 
-$(() => { <<
-  << << < HEAD
+$(() => {
   $("#vote").click(function() {
     voteButton();
   });
