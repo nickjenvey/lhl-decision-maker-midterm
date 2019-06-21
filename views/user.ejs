@@ -16,7 +16,7 @@
   <!-- scripts for the app -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="/scripts/admin-page.js"></script>
+  <script src="/scripts/user-page.js"></script>
 </head>
 
 <body>
@@ -33,19 +33,27 @@
   </header>
   <main>
     <section>
-      <div class="question--div">
+      <div class="question--div" id="user" data-id="<%=form.id%>">
         <span class="q">Q:</span>
         <%=form.question%>
       </div>
       <div id="result-panel" style="display:none">
         <h2 class="result-title">Here are the results for the poll!</h2>
       </div>
+      <h2 class="sortable-title">Sort these ordering from favourite to least favourite:</h2>
+      <div class="sortable">
+        <% for (let i=0;i<form.options.length;i++) {%>
+        <div class="option">
+          <%=form.options[i]%>
+        </div>
+        <% }%>
+      </div>
       <div class="buttons">
         <button id="vote">Vote</button>
       </div>
       <div id="share">
         <div class="share-link">This will be a link</div>
-        <div class="share-text">Share this link with your friends!</div> 
+        <div class="share-text">Share this link with your friends!</div>
       </div>
     </section>
   </main>
