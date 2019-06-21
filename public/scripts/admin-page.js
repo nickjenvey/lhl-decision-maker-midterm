@@ -1,4 +1,4 @@
-const voteButton = () => {
+const vote = () => {
   const options = [];
   $(".option").each(function(index, value) {
     options.push({
@@ -12,14 +12,33 @@ const voteButton = () => {
   });
 }
 
+const getResult = () => {
+  const url = `/${$("#admin").data("id")}/result`;
+  $.getJSON(url, function(data) {
+    data.forEach(element => {
+      $("<div>").text(`${element[0]} has a ranking of ${Math.round(element[1]*100)/100}`).appendTo($("#result-panel"));
+    });
+    $("#result-panel").slideDown(1000);
+  });
+}
 
+let voted = false;
+let resultShown = false;
 
 $(() => {
+
   $("#vote").click(function() {
-    voteButton();
+    vote();
+    // $(this).hide();
   });
   $("#result").click(function() {
-    showResult();
+    if (!resultShown) {
+      getResult();
+      resultShown = true;
+    } else {
+      $("#result-panel").slideUp().empty();
+      resultShown = false;
+    }
   });
   //added sortable
   $(".sortable").sortable();

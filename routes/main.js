@@ -34,13 +34,22 @@ router.get("/:id/admin", (req, res) => {
   res.render("admin.ejs", { form });
 });
 
-// to handle admin requests
+// to handle admin vote
 router.post("/:id/admin", (req, res) => {
   req.body.options.forEach((element) => {
     pollStatus.options[element.option] += (pollStatus.numOptions - element.rank) / pollStatus.numOptions;
   });
   console.log(pollStatus.options);
   res.send(200);
+});
+
+// to handle admin result
+router.get("/:id/result", (req, res) => {
+  const entries = Object.entries(pollStatus.options);
+  entries.sort((a, b) => {
+    return b[1] - a[1];
+  })
+  res.json(entries);
 });
 
 // // to render poll user page
