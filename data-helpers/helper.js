@@ -19,15 +19,18 @@ module.exports = function dataHelper() {
       return result.join("");
     },
 
-    parseForm: function(form, body) {
-      form.id = this.generateId();
+    parseForm: function(body) {
+      const form = {};
+      form.admin_url = this.generateId();
+      form.user_url = this.generateId();
       form.question = body.question;
       form.numOptions = body["num-options"];
       form.email = body.email;
-      form.options = [];
+      form.options = {};
       for (let i = 0; i < form.numOptions; i++) {
-        form.options.push(body[`option${i+1}`]);
+        form.options[body[`option${i+1}`]] = 0;
       }
+      return form;
     },
   };
 };

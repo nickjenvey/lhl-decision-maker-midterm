@@ -23,14 +23,25 @@ router.get("/", (req, res) => {
 
 // to create new poll
 router.post("/", (req, res) => {
-  dataHelper.parseForm(form, req.body);
+  const form = dataHelper.parseForm(req.body);
   //use mailgun to send poll links to admin
   // sendEmail();
-  pollStatus.numVoters = 0;
-  pollStatus.numOptions = form.numOptions;
-  pollStatus.options = {};
-  form.options.forEach((element) => { pollStatus.options[element] = 0; });
-  res.redirect(`/${form.id}/admin`);
+  knex('polls').insert({
+    admin_email: form.email,
+    question: form.question,
+    admin_url: form.admin_url,
+    user_url: form.user_url
+  }).then(function() {
+    return knex.select('id').from('polls').where('admin_url', form.admin_url).first()
+      .then(function(data) {
+        return knex('selections').insert({
+          poll_id: data.id,
+          selection_ranking: JSON.stringify(form.options)
+        }).then(function() {
+          res.redirect(`/${form.admin_url}`);
+        });
+      });
+  })
 });
 
 // // to render poll admin page
@@ -56,10 +67,11 @@ router.post("/:id/admin", (req, res) => {
   result.forEach((element) => {
     selectionRanking[element.option] = (result.length - element.rank) / result.length;
   });
-  knex('selections').insert({ poll_id: 1, selection_ranking: JSON.stringify(selectionRanking) }).then(function(data) {
-    console.log(data);
+  knex.select('id').from('polls').where('admin_url', req.params.id).first().then(function(data) {
+    return knex('selections').insert({ poll_id: data.id, selection_ranking: JSON.stringify(selectionRanking) }).then(() => {
+      res.send(200);
+    });
   });
-  res.send(200);
 });
 
 // to handle admin result
