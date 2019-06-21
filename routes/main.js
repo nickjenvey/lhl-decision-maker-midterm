@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require("body-parser");
-const form = {};
+// const form = {};
 const pollStatus = {};
 const dataHelper = require("../data-helpers/helper")();
 
@@ -12,6 +12,10 @@ const mailgun = require("mailgun-js");
 const DOMAIN = "sandboxd1e993e6d73d4cd1b6a65dd560c26f1f.mailgun.org";
 const mg = mailgun({ apiKey: "3560516615680c99ef6a186420f0e606-29b7488f-176e6817", domain: DOMAIN });
 
+//db stuff
+const ENV = process.env.ENV || "development";
+const knexConfig = require("../knexfile");
+const knex = require("knex")(knexConfig[ENV]);
 
 router.get("/", (req, res) => {
   res.render("index");
@@ -30,8 +34,17 @@ router.post("/", (req, res) => {
 });
 
 // // to render poll admin page
-router.get("/:id/admin", (req, res) => {
-  res.render("admin.ejs", { form });
+router.get("/:id", (req, res) => {
+  let form = {};
+  knex.select('admin_email', 'question', 'admin_url', 'user_url', 'selection_ranking')
+    .from('polls')
+    .join('selections', 'selections.poll_id', '=', 'polls.id')
+    .first()
+    .then(function(data) {
+      form = data;
+      form.options = Object.keys(JSON.parse(form.selection_ranking));
+      res.render("admin.ejs", { form });
+    });
 });
 
 // to handle admin vote
