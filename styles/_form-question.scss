@@ -1,0 +1,52 @@
+.form__question {
+  margin-bottom: $bottom-spacing;
+  display: flex;
+  justify-content: center;
+
+  .q {
+    padding: 0.625rem;
+    background-color: $dark;
+    font-weight: 600;
+    color: #fff;
+    font-size: 1.5rem;
+  }
+
+  .question--input {
+    color: $primary-color;
+    width: 100%;
+    border: 2px solid $dark;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    outline: none;
+    padding: 0.625rem;
+    position: relative;
+
+    &::-webkit-input-placeholder {
+      color: $dark;
+      opacity: 1;
+    }
+    &::-moz-placeholder {
+      color: $dark;
+      opacity: 1;
+    }
+    &:-ms-input-placeholder {
+      color: $dark;
+      opacity: 1;
+    }
+
+    &:focus {
+      border-color: $primary-color;
+      background-color: rgba(47,145,46,0.1);
+
+      &::-webkit-input-placeholder {
+        color: $primary-color;
+      }
+      &::-moz-placeholder {
+        color: $primary-color;
+      }
+      &:-ms-input-placeholder {
+        color: $primary-color;
+      }
+    }
+  }
+}

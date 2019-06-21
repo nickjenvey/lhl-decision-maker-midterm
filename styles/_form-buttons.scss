@@ -1,10 +1,8 @@
-.email-submit {
+.form__buttons {
   display: inline-flex;
   width: 100%;
   align-items: center;
-  font: {
-    size: 0.875rem;
-  }
+  font-size: 0.875rem;
 
   .email {
     color: $dark;
@@ -48,9 +46,7 @@
     color: $accent-color-2;
 
     &:hover {
-      background: {
-        color: $accent-color-2;
-      }
+      background-color: $accent-color-2;
       color: #fff;
     }
   }
