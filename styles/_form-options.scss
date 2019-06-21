@@ -1,59 +1,5 @@
-.question-options {
-  margin-bottom: 6.25rem;
-
-  .q {
-    background: {
-      color: $dark;
-    }
-    font: {
-      weight: 600;
-    }
-    content: "Q:";
-    color: #fff;
-    top: 0;
-    left: 0;
-  }
-
-  .question--input {
-    color: $primary-color;
-    width: 100%;
-    border: 2px solid $dark;
-    font: {
-      size: 1.5rem;
-    }
-    letter-spacing: 1px;
-    outline: none;
-    padding: 0.625rem;
-    margin-bottom: 3.125rem;
-    position: relative;
-
-    &::-webkit-input-placeholder {
-      color: $dark;
-      opacity: 1;
-    }
-    &::-moz-placeholder {
-      color: $dark;
-      opacity: 1;
-    }
-    &:-ms-input-placeholder {
-      color: $dark;
-      opacity: 1;
-    }
-
-    &:focus {
-      border-color: $primary-color;
-      background-color: rgba(47,145,46,0.1);
-      &::-webkit-input-placeholder {
-        color: $primary-color;
-      }
-      &::-moz-placeholder {
-        color: $primary-color;
-      }
-      &:-ms-input-placeholder {
-        color: $primary-color;
-      }
-    }
-  }
+.form__options {
+  margin-bottom: $bottom-spacing;
 
   .option {
     color: $primary-color;
@@ -62,7 +8,7 @@
     outline: none;
     padding: 0.9375rem;
     margin-bottom: 1.25rem;
-
+  
     &::-webkit-input-placeholder {
       color: $dark;
       opacity: 1;
@@ -75,7 +21,7 @@
       color: $dark;
       opacity: 1;
     }
-
+  
     &:focus {
       border-color: $primary-color;
       background-color: rgba(47,145,46,0.1);
@@ -90,7 +36,7 @@
       }
     }
   }
-
+  
   #add-option {
     display: block;
     background: {
@@ -108,17 +54,17 @@
     font: {
       size: 0.875rem;
     }
-
+  
     &:hover {
       transform: translateY(-4px);
       -webkit-box-shadow: 0 4px 10px 0 rgba(0,0,0,0.25);
       box-shadow: 0 4px 10px 0 rgba(0,0,0,0.25);
-
+  
       &:after {
         color: #fff;
       }
     }
-
+  
     &:after {
       display: inline-block;
       position: absolute;

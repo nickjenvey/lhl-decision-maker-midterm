@@ -19,11 +19,14 @@ main {
     width: 100%;
 
     form {
-      @import 'create-question-options';
-      @import 'create-email-submit';
+      @import 'form-question';
+      @import 'form-options';
+      @import 'form-buttons';
     }
 
     @import 'question';
-    @import 'admin-q-o';
+    @import 'admin';
+    @import 'sortable';
+    @import 'buttons';
   }
 }
