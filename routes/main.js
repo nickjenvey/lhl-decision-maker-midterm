@@ -38,14 +38,14 @@ router.post("/", (req, res) => {
           poll_id: data.id,
           selection_ranking: JSON.stringify(form.options)
         }).then(function() {
-          res.redirect(`/${form.admin_url}`);
+          res.redirect(`/${form.admin_url}/admin`);
         });
       });
   })
 });
 
-// // to render poll admin page
-router.get("/:id", (req, res) => {
+// to render poll admin page
+router.get("/:id/admin", (req, res) => {
   let form = {};
   knex.select('admin_email', 'question', 'admin_url', 'user_url', 'selection_ranking')
     .from('polls')
@@ -79,7 +79,7 @@ router.get("/:id/result", (req, res) => {
   knex.select('selection_ranking')
     .from('polls')
     .join('selections', 'selections.poll_id', '=', 'polls.id')
-    .where('admin_url', req.params.id)
+    .where('admin_url', req.params.id).orWhere('user_url', req.params.id)
     .then(function(data) {
       const selections = data.map(element => JSON.parse(element.selection_ranking));
       const options = Object.keys(selections[0]);
@@ -99,14 +99,36 @@ router.get("/:id/result", (req, res) => {
     });
 });
 
-// // to render poll user page
-// app.get("/:id/user", (req, res) => {
+// to render poll user page
+router.get("/:id", (req, res) => {
+  let form = {};
+  knex.select('admin_email', 'question', 'admin_url', 'user_url', 'selection_ranking')
+    .from('polls')
+    .join('selections', 'selections.poll_id', '=', 'polls.id')
+    .where('user_url', req.params.id)
+    .first()
+    .then(function(data) {
+      form = data;
+      form.id = req.params.id;
+      form.options = Object.keys(JSON.parse(form.selection_ranking));
+      res.render("user.ejs", { form });
+    });
 
-// });
+});
 
-// app.post("/:id/user", (req, res) => {
-
-// });
+//handle user votes
+router.post("/:id", (req, res) => {
+  const result = req.body.options;
+  const selectionRanking = {};
+  result.forEach((element) => {
+    selectionRanking[element.option] = (result.length - element.rank) / result.length;
+  });
+  knex.select('id').from('polls').where('user_url', req.params.id).first().then(function(data) {
+    return knex('selections').insert({ poll_id: data.id, selection_ranking: JSON.stringify(selectionRanking) }).then(() => {
+      res.send(200);
+    });
+  });
+});
 
 const sendEmail = () => {
   const data = {
