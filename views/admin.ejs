@@ -24,15 +24,14 @@
   </header>
   <main>
     <section>
-      <p> Admin :
+      <p id="admin" data-id="<%=form.id%>"> Admin :
         <%=form.email%>
       </p>
       <p> Question:
         <%=form.question%>
       </p>
       <% for (let i=0;i<form.options.length;i++) {%>
-      <p> Option
-        <%=(i+1)%>:
+      <p class="options">
         <%=form.options[i]%>
       </p>
       <% }%>

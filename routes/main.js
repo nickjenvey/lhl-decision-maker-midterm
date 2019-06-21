@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require("body-parser");
 const form = {};
+const pollStatus = {};
 const dataHelper = require("../data-helpers/helper")();
 
 //mailgun stuff
@@ -21,6 +22,10 @@ router.post("/", (req, res) => {
   dataHelper.parseForm(form, req.body);
   //use mailgun to send poll links to admin
   // sendEmail();
+  pollStatus.numVoters = 0;
+  pollStatus.numOptions = form.numOptions;
+  pollStatus.options = {};
+  form.options.forEach((element) => { pollStatus.options[element] = 0; });
   res.redirect(`/${form.id}/admin`);
 });
 
@@ -31,7 +36,11 @@ router.get("/:id/admin", (req, res) => {
 
 // to handle admin requests
 router.post("/:id/admin", (req, res) => {
-
+  req.body.options.forEach((element) => {
+    pollStatus.options[element.option] += (pollStatus.numOptions - element.rank) / pollStatus.numOptions;
+  });
+  console.log(pollStatus.options);
+  res.send(200);
 });
 
 // // to render poll user page
