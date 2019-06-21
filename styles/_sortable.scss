@@ -16,26 +16,6 @@
     outline: none;
     padding: 0.9375rem;
     margin-bottom: 1.25rem;
-
-    &:nth-child(1), &:nth-child(2), &:nth-child(3) {
-      position: relative;
-      color: #fff;
-      font-weight: 600;
-    }
-
-    &:nth-child(1) {
-      border-color: rgba(47,145,46,1);
-      background-color: rgba(47,145,46,0.9);
-    }
-
-    &:nth-child(2) {
-      border-color: rgba(47,145,46,1);
-      background-color: rgba(47,145,46,0.6);
-    }
-
-    &:nth-child(3) {
-      border-color: rgba(47,145,46,1);
-      background-color: rgba(47,145,46,0.3);
-    }
+    cursor: pointer;
   }
 }

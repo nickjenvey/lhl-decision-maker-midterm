@@ -1,0 +1,69 @@
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  #vote {
+    display: block;
+    background: {
+      color: $primary-color;
+    }
+    position: relative;
+    -webkit-border-radius: 6.25rem;
+    border-radius: 6.25rem;
+    border: 2px solid $secondary-color;
+    color: #fff;
+    padding: 0.625rem 3.125rem 0.625rem 1.25rem;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    font: {
+      size: 0.875rem;
+    }
+  
+    &:hover {
+      transform: translateY(-4px);
+      -webkit-box-shadow: 0 4px 10px 0 rgba(0,0,0,0.25);
+      box-shadow: 0 4px 10px 0 rgba(0,0,0,0.25);
+  
+      &:after {
+        color: #fff;
+      }
+    }
+  
+    &:after {
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      right: 1.25rem;
+      transform: translateY(-50%);
+      font: {
+        family: "Font Awesome 5 Free";
+        weight: 900;
+        size: 1rem;
+      }
+      content: "\f772";
+      color: $secondary-color;
+    }
+  }
+
+  #result {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font: {
+      family: monaco, Consolas, Lucida Console, monospace;
+      size: 0.75rem;
+    }
+    margin: 0 1.25rem 0 auto;
+
+    &:hover {
+      color: $accent-color-1;
+    }
+  }
+
+  #share {
+
+  }
+}
