@@ -14,14 +14,16 @@ const voteButton = () => {
 
 
 
-$(() => {
+$(() => { <<
+  << << < HEAD
   $("#vote").click(function() {
     voteButton();
   });
   $("#result").click(function() {
     showResult();
   });
-
-
+  //added sortable
+  $(".sortable").sortable();
+  $(".sortable").disableSelection();
 
 })

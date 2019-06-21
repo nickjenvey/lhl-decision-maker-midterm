@@ -1,0 +1,89 @@
+.admin {
+  display: inline-block;
+  background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+  background-size: 1800% 1800%;
+  -webkit-animation: rainbow 18s ease infinite;
+  -z-animation: rainbow 18s ease infinite;
+  -o-animation: rainbow 18s ease infinite;
+  animation: rainbow 18s ease infinite;
+  font: {
+    family: monaco, Consolas, Lucida Console, monospace;
+  }
+  padding: 0.625rem 1.25rem;
+  -webkit-border-radius: 0.625rem;
+  border-radius: 0.625rem;
+  color: #fff;
+  margin-bottom: 3.125rem;
+}
+
+.sortable-title {
+  font: {
+    size: 1rem;
+    weight: 400;
+  }
+  letter-spacing: 1px;
+}
+
+.sortable {
+  margin-bottom: 3.125rem;
+
+  .option {
+    color: $dark;
+    width: 100%;
+    border: 2px dashed $dark;
+    outline: none;
+    padding: 0.9375rem;
+    margin-bottom: 1.25rem;
+
+    &:nth-child(1), &:nth-child(2), &:nth-child(3) {
+      position: relative;
+      color: #fff;
+      font: {
+        weight: 600;
+      }
+    }
+
+    &:nth-child(1) {
+      border-color: rgba(47,145,46,1);
+      background: {
+        color: rgba(47,145,46,0.9);
+      }
+    }
+
+    &:nth-child(2) {
+      border-color: rgba(47,145,46,1);
+      background: {
+        color: rgba(47,145,46,0.6);
+      }
+    }
+
+    &:nth-child(3) {
+      border-color: rgba(47,145,46,1);
+      background: {
+        color: rgba(47,145,46,0.3);
+      }
+    }
+  }
+}
+
+// Rainbow Animation 
+@-webkit-keyframes rainbow {
+  0%{background-position:0% 82%}
+  50%{background-position:100% 19%}
+  100%{background-position:0% 82%}
+}
+@-moz-keyframes rainbow {
+  0%{background-position:0% 82%}
+  50%{background-position:100% 19%}
+  100%{background-position:0% 82%}
+}
+@-o-keyframes rainbow {
+  0%{background-position:0% 82%}
+  50%{background-position:100% 19%}
+  100%{background-position:0% 82%}
+}
+@keyframes rainbow { 
+  0%{background-position:0% 82%}
+  50%{background-position:100% 19%}
+  100%{background-position:0% 82%}
+}

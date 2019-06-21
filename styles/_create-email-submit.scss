@@ -7,7 +7,7 @@
   }
 
   .email {
-    color: #222;
+    color: $dark;
     width: 100%;
     border: { 
       top: 2px solid $accent-color-2;
@@ -22,15 +22,15 @@
     
 
     &::-webkit-input-placeholder {
-      color: #222;
+      color: $dark;
       opacity: 1;
     }
     &::-moz-placeholder {
-      color: #222;
+      color: $dark;
       opacity: 1;
     }
     &:-ms-input-placeholder {
-      color: #222;
+      color: $dark;
       opacity: 1;
     }
   }

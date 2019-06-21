@@ -14,6 +14,7 @@
   <!-- scripts for the app -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="/scripts/home-page.js"></script>
+</head>
 
 <body>
   <header>
@@ -27,12 +28,13 @@
       <h2>Create a poll and we'll help you pick... le</h2>
     </section>
   </header>
-  <div class="accent"></div>
   <main>
     <section>
       <form method="POST" action="/">
         <div class="question-options">
-          <input class="question" type="text" name="question" placeholder="What do you need help picking between?">
+          <div class="question_container">
+            <div class="q">Q:</div><input class="question--input" type="text" name="question" placeholder="What do you need help picking between?">
+          </div>
           <button id="add-option">Add a new option</button>
         </div>
         <div class="email-submit">
