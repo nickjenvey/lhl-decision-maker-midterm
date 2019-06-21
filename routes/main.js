@@ -39,9 +39,11 @@ router.get("/:id", (req, res) => {
   knex.select('admin_email', 'question', 'admin_url', 'user_url', 'selection_ranking')
     .from('polls')
     .join('selections', 'selections.poll_id', '=', 'polls.id')
+    .where('admin_url', req.params.id)
     .first()
     .then(function(data) {
       form = data;
+      form.id = req.params.id;
       form.options = Object.keys(JSON.parse(form.selection_ranking));
       res.render("admin.ejs", { form });
     });
@@ -49,20 +51,40 @@ router.get("/:id", (req, res) => {
 
 // to handle admin vote
 router.post("/:id/admin", (req, res) => {
-  req.body.options.forEach((element) => {
-    pollStatus.options[element.option] += (pollStatus.numOptions - element.rank) / pollStatus.numOptions;
+  const result = req.body.options;
+  const selectionRanking = {};
+  result.forEach((element) => {
+    selectionRanking[element.option] = (result.length - element.rank) / result.length;
   });
-  console.log(pollStatus.options);
+  knex('selections').insert({ poll_id: 1, selection_ranking: JSON.stringify(selectionRanking) }).then(function(data) {
+    console.log(data);
+  });
   res.send(200);
 });
 
 // to handle admin result
 router.get("/:id/result", (req, res) => {
-  const entries = Object.entries(pollStatus.options);
-  entries.sort((a, b) => {
-    return b[1] - a[1];
-  })
-  res.json(entries);
+  knex.select('selection_ranking')
+    .from('polls')
+    .join('selections', 'selections.poll_id', '=', 'polls.id')
+    .where('admin_url', req.params.id)
+    .then(function(data) {
+      const selections = data.map(element => JSON.parse(element.selection_ranking));
+      const options = Object.keys(selections[0]);
+      const entries = {};
+      options.forEach((element) => {
+        let total = 0;
+        selections.forEach((key) => {
+          total += key[element];
+        });
+        entries[element] = total;
+      });
+      const result = Object.entries(entries);
+      result.sort((a, b) => {
+        return b[1] - a[1];
+      })
+      res.json(result);
+    });
 });
 
 // // to render poll user page
