@@ -9,6 +9,7 @@ const vote = () => {
   const url = `/${$("#admin").data("id")}/admin`;
   $.post(url, { options: options }, function(data) {
     console.log(data);
+    getResult();
   });
 }
 
@@ -18,6 +19,9 @@ const getResult = () => {
     data.forEach(element => {
       $("<div>").addClass("option").text(`${element[0]} has a ranking of ${Math.round(element[1]*100)/100}`).appendTo($("#result-panel"));
     });
+    $(".sortable", "").remove();
+    $(".sortable-title").remove();
+    $("#result-panel").removeClass("results-showing");
     $("#result-panel").slideDown();
   });
 }
@@ -29,7 +33,7 @@ $(() => {
 
   $("#vote").click(function() {
     vote();
-    // $(this).hide();
+    $(".buttons").remove();
   });
   $("#result").click(function() {
     if (!resultShown) {
