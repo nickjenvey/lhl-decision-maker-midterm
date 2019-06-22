@@ -1,0 +1,26 @@
+@media only screen and (max-width: 450px) {
+  html {
+    font-size: 14px;
+  }
+
+  main {
+    padding: 1.25rem;
+  }
+
+  .create {
+    height: 37.5px !important;
+  }
+
+  .admin {
+    display: block;
+    text-align: center;
+  }
+
+  .share-text {
+    height: 37.5px !important;
+  }
+
+  footer{
+    font-size: 0.75rem;
+  }
+}

@@ -19,15 +19,15 @@ main {
     width: 100%;
 
     form {
-      @import 'form-question';
-      @import 'form-options';
-      @import 'form-buttons';
+      // @import 'form-question';
+      // @import 'form-options';
+      // @import 'form-buttons';
     }
 
-    @import 'question';
-    @import 'admin';
-    @import 'options';
-    @import 'buttons';
-    @import 'share';
+    // @import 'question';
+    // @import 'admin';
+    // @import 'options';
+    // @import 'buttons';
+    // @import 'share';
   }
 }

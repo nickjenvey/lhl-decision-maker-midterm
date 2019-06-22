@@ -115,7 +115,6 @@ router.get("/:id", (req, res) => {
       form.options = Object.keys(JSON.parse(form.selection_ranking));
       res.render("user.ejs", { form });
     });
-
 });
 
 //handle user votes

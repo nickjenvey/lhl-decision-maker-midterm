@@ -3,3 +3,18 @@
 @import 'header';
 @import 'main';
 @import 'footer';
+
+// Form main styles
+@import 'form-question';
+@import 'form-options';
+@import 'form-buttons';
+
+//General main styles
+@import 'question';
+@import 'admin';
+@import 'options';
+@import 'buttons';
+@import 'share';
+
+//Media queries
+@import 'media-queries';
