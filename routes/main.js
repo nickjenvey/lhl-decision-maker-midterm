@@ -74,28 +74,30 @@ router.post("/:id/admin", (req, res) => {
   });
 });
 
-// to handle admin result
+// to handle result
 router.get("/:id/result", (req, res) => {
-  knex.select('selection_ranking')
-    .from('polls')
-    .join('selections', 'selections.poll_id', '=', 'polls.id')
-    .where('admin_url', req.params.id).orWhere('user_url', req.params.id)
+  knex.select('id').from('polls')
+    .where('admin_url', req.params.id).orWhere('user_url', req.params.id).first()
     .then(function(data) {
-      const selections = data.map(element => JSON.parse(element.selection_ranking));
-      const options = Object.keys(selections[0]);
-      const entries = {};
-      options.forEach((element) => {
-        let total = 0;
-        selections.forEach((key) => {
-          total += key[element];
+      return knex.select('selection_ranking')
+        .from('selections').where('poll_id', data.id)
+        .then(function(data) {
+          const selections = data.map(element => JSON.parse(element.selection_ranking));
+          const options = Object.keys(selections[0]);
+          const entries = {};
+          options.forEach((element) => {
+            let total = 0;
+            selections.forEach((key) => {
+              total += key[element];
+            });
+            entries[element] = total;
+          });
+          const result = Object.entries(entries);
+          result.sort((a, b) => {
+            return b[1] - a[1];
+          })
+          res.json(result);
         });
-        entries[element] = total;
-      });
-      const result = Object.entries(entries);
-      result.sort((a, b) => {
-        return b[1] - a[1];
-      })
-      res.json(result);
     });
 });
 
