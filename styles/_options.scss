@@ -21,12 +21,14 @@
   outline: none;
   padding: 0.9375rem;
   margin-bottom: 1.25rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
-#result-panel {
+.results-showing {
   margin-bottom: $bottom-spacing;
   padding-bottom: $bottom-spacing;
   border-bottom: 6px dashed $primary-color;
-
-  .option {}
 }
