@@ -37,7 +37,7 @@
         <span class="q">Q:</span>
         <%=form.question%>
       </div>
-      <div id="result-panel" style="display:none">
+      <div id="result-panel" class="results-showing" style="display:none">
         <h2 class="result-title">Here are the results for the poll!</h2>
       </div>
       <h2 class="sortable-title">Sort these ordering from favourite to least favourite:</h2>
@@ -53,7 +53,7 @@
         <input id="users-name" type="text" name="users-name" placeholder="Please enter your name to vote" required>
       </div>
       <div id="share">
-        <div class="share-link">localhost:8080/<%= form.id% ></div>
+        <div class="share-link">localhost:8080/<%= form.id %></div>
         <div class="share-text">Share this link with your friends!</div>
       </div>
     </section>
