@@ -1,13 +1,10 @@
 .buttons {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 
   #vote {
     display: block;
-    background: {
-      color: $primary-color;
-    }
+    background-color: $primary-color;
     position: relative;
     -webkit-border-radius: 6.25rem;
     border-radius: 6.25rem;
@@ -17,9 +14,7 @@
     cursor: pointer;
     outline: none;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
-    font: {
-      size: 0.875rem;
-    }
+    font-size: 0.875rem;
   
     &:hover {
       transform: translateY(-4px);
@@ -60,6 +55,33 @@
 
     &:hover {
       color: $accent-color-1;
+    }
+  }
+
+  #users-name {
+    flex: 0 0 14.8125rem;
+    margin-left: 0.625rem;
+    position: relative;
+    -webkit-border-radius: 6.25rem;
+    border-radius: 6.25rem;
+    border: 2px solid $secondary-color;
+    color: $dark;
+    padding: 0.625rem 1.25rem;
+    outline: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    font-size: 0.875rem;
+
+    &::-webkit-input-placeholder {
+      color: $dark;
+      opacity: 1;
+    }
+    &::-moz-placeholder {
+      color: $dark;
+      opacity: 1;
+    }
+    &:-ms-input-placeholder {
+      color: $dark;
+      opacity: 1;
     }
   }
 }
