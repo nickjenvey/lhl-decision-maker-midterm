@@ -3,14 +3,14 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require("body-parser");
+require('dotenv').config();
 // const form = {};
 const pollStatus = {};
 const dataHelper = require("../data-helpers/helper")();
 
 //mailgun stuff
 const mailgun = require("mailgun-js");
-const DOMAIN = "sandboxd1e993e6d73d4cd1b6a65dd560c26f1f.mailgun.org";
-const mg = mailgun({ apiKey: "3560516615680c99ef6a186420f0e606-29b7488f-176e6817", domain: DOMAIN });
+const mg = mailgun({ apiKey: process.env.MAILGUN_APIKEY, domain: process.env.MAILGUN_DOMAIN });
 
 //db stuff
 const ENV = process.env.ENV || "development";
@@ -25,7 +25,10 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const form = dataHelper.parseForm(req.body);
   //use mailgun to send poll links to admin
-  // sendEmail();
+  const message = `Admin url: localhost:8080/${form.admin_url}/admin
+    \nUser url :localhost:8080/${form.user_url}`;
+  sendEmail(form.email, message);
+  //
   knex('polls').insert({
     admin_email: form.email,
     question: form.question,
@@ -120,23 +123,27 @@ router.get("/:id", (req, res) => {
 //handle user votes
 router.post("/:id", (req, res) => {
   const result = req.body.options;
+
   const selectionRanking = {};
   result.forEach((element) => {
     selectionRanking[element.option] = (result.length - element.rank) / result.length;
   });
-  knex.select('id').from('polls').where('user_url', req.params.id).first().then(function(data) {
+  knex.select('id', 'admin_email', 'admin_url').from('polls').where('user_url', req.params.id).first().then(function(data) {
+    //mail admin that the user has voted
+    const message = `A user has voted!\nGo to localhost:8080/${data.admin_url}/admin to see result.`;
+    sendEmail(data.admin_email, message);
     return knex('selections').insert({ poll_id: data.id, selection_ranking: JSON.stringify(selectionRanking) }).then(() => {
       res.send(200);
     });
   });
 });
 
-const sendEmail = () => {
+const sendEmail = (email, message) => {
   const data = {
-    from: "Mailgun Sandbox <postmaster@sandboxd1e993e6d73d4cd1b6a65dd560c26f1f.mailgun.org>",
-    to: "yynickel@gmail.com",
+    from: `Mailgun Sandbox <postmaster@${process.env.MAILGUN_DOMAIN}>`,
+    to: `${email}`,
     subject: "Hello",
-    text: `Testing some Mailgun awesomness!\nadmin URL: localhost:8080/${form.id}/admin`
+    text: `${message}`
   };
   mg.messages().send(data, function(error, body) {
     console.log(body);
