@@ -4,7 +4,11 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require("body-parser");
 require('dotenv').config();
-// const form = {};
+const cookieSession = require('cookie-session');
+router.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2'],
+}));
 const pollStatus = {};
 const dataHelper = require("../data-helpers/helper")();
 
@@ -24,6 +28,7 @@ router.get("/", (req, res) => {
 // to create new poll
 router.post("/", (req, res) => {
   const form = dataHelper.parseForm(req.body);
+  req.session.voted = false;
   //use mailgun to send poll links to admin
   const message = `Admin url: localhost:8080/${form.admin_url}/admin
     \nUser url :localhost:8080/${form.user_url}`;
@@ -57,6 +62,7 @@ router.get("/:id/admin", (req, res) => {
     .first()
     .then(function(data) {
       form = data;
+      form.admin_voted = req.session.voted;
       form.id = req.params.id;
       form.options = Object.keys(JSON.parse(form.selection_ranking));
       res.render("admin.ejs", { form });
@@ -65,6 +71,7 @@ router.get("/:id/admin", (req, res) => {
 
 // to handle admin vote
 router.post("/:id/admin", (req, res) => {
+  req.session.voted = true;
   const result = req.body.options;
   const selectionRanking = {};
   result.forEach((element) => {

@@ -9,6 +9,7 @@ const vote = () => {
   const url = `/${$("#admin").data("id")}/admin`;
   $.post(url, { options: options }, function(data) {
     console.log(data);
+    $("#result-panel").empty();
     getResult();
   });
 }
@@ -25,13 +26,13 @@ const getResult = () => {
   });
 }
 
-let voted = false;
+
 let resultShown = false;
 
 $(() => {
-
+  let voted = $("#admin").data("voted");
+  console.log(voted);
   $("#vote").click(function() {
-    voted = true;
     vote();
     $(".buttons").remove();
     $(".sortable", "").remove();
@@ -51,5 +52,11 @@ $(() => {
   //added sortable
   $(".sortable").sortable();
   $(".sortable").disableSelection();
-
+  if (voted) {
+    $(".buttons").remove();
+    $(".sortable", "").remove();
+    $(".sortable-title").remove();
+    $("#result-panel").removeClass("results-showing");
+    getResult();
+  }
 })
